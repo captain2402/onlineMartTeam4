@@ -1,0 +1,37 @@
+.container{
+    margin-top: 20vh;
+}
+.new_arrivals{
+    background-color: green;
+    font-weight: bold;
+    font-size: 12px;
+    color: white;
+    width: 30px;
+}
+
+.col-md-7{
+    padding-left: 30vw;
+}
+.col-md-7 h2{
+    color: gray;
+}
+.price{
+    font-size: 26px;
+    color: green;
+    font-weight: bold;
+    padding-top: 20px;
+}
+input{
+    font-weight: bold;
+    height: 5vh;
+    text-align: center;
+}
+.btn-success{
+    margin: 30px;
+    height: 6vh;
+    font-weight: bold;
+    font-size: 20px;
+}
+body{
+    background-color: aqua;
+}
