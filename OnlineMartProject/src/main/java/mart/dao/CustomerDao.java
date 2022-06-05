@@ -10,6 +10,7 @@ import java.util.List;
 
 import mart.model.LoginModel;
 import mart.model.RegistrationModel;
+import mart.model.productModel;
 
 public class CustomerDao {
 	
@@ -61,11 +62,56 @@ public class CustomerDao {
 		return b;
 	}
 	
-	public List<RegistrationModel> displayAll(){
-		List<RegistrationModel> lst=new LinkedList<RegistrationModel>();
+//	public List<RegistrationModel> displayAll(){
+//		List<RegistrationModel> lst=new LinkedList<RegistrationModel>();
+//		con=MyConnection.myConnection();
+//		
+//		String query="select * from mCustomer";
+//		
+//		try {
+//			
+//			Statement stat=con.createStatement();
+//			ResultSet result=stat.executeQuery(query);
+//			
+//			while(result.next()) {
+//				lst.add(new RegistrationModel(result.getString(1),result.getString(2),result.getString(3),result.getString(4)));
+//			}
+//			
+//		}catch(Exception e) {
+//			System.out.println(e);
+//		}
+//		return lst;
+//	}
+//	
+//	public RegistrationModel searchRecord(String phone){
+////		List<RegistrationModel> lst=null;
+//		con=MyConnection.myConnection();
+//		RegistrationModel rm=null;
+//		try {
+//			
+//			PreparedStatement ps=con.prepareStatement("select * from mCustomer where phone=?");
+//
+//			ps.setString(1,phone );
+//			
+//			ResultSet result=ps.executeQuery();
+//			
+//			if(result.next()) {
+//				 rm=new RegistrationModel(result.getString(1),result.getString(2),result.getString(3),result.getString(4));
+////				lst=new ArrayList<RegistrationModel>();
+////				lst.add(rm);	
+//			}
+//			
+//		}catch(Exception e) {
+//			System.out.println(e);
+//		}
+//		return rm;
+//	}
+	
+	public List<productModel> displaycartItems(){
+		List<productModel> lst=new LinkedList<productModel>();
 		con=MyConnection.myConnection();
 		
-		String query="select * from mCustomer";
+		String query="select * from cart";
 		
 		try {
 			
@@ -73,37 +119,17 @@ public class CustomerDao {
 			ResultSet result=stat.executeQuery(query);
 			
 			while(result.next()) {
-				lst.add(new RegistrationModel(result.getString(1),result.getString(2),result.getString(3),result.getString(4)));
+				lst.add(new productModel(result.getString(1),result.getString(2),result.getInt(3),result.getInt(5),result.getInt(4)));
+			}
+			
+			for(int i=0;i<lst.size();i++) {
+				System.out.println(lst.get(i).getPname());
 			}
 			
 		}catch(Exception e) {
 			System.out.println(e);
 		}
 		return lst;
-	}
-	
-	public RegistrationModel searchRecord(String phone){
-//		List<RegistrationModel> lst=null;
-		con=MyConnection.myConnection();
-		RegistrationModel rm=null;
-		try {
-			
-			PreparedStatement ps=con.prepareStatement("select * from mCustomer where phone=?");
-
-			ps.setString(1,phone );
-			
-			ResultSet result=ps.executeQuery();
-			
-			if(result.next()) {
-				 rm=new RegistrationModel(result.getString(1),result.getString(2),result.getString(3),result.getString(4));
-//				lst=new ArrayList<RegistrationModel>();
-//				lst.add(rm);	
-			}
-			
-		}catch(Exception e) {
-			System.out.println(e);
-		}
-		return rm;
 	}
 
 }
